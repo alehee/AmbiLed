@@ -1,0 +1,17 @@
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\bin\x64\Debug\PcLedVisualization.exe.config
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\bin\x64\Debug\PcLedVisualization.exe
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\bin\x64\Debug\PcLedVisualization.pdb
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\MainWindow.g.cs
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\App.g.cs
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization_MarkupCompile.cache
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization_MarkupCompile.lref
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\MainWindow.baml
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.g.resources
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.Properties.Resources.resources
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.csproj.GenerateResource.cache
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.csproj.CoreCompileInputs.cache
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.exe
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.pdb
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\PcLedVisualization.csprojAssemblyReference.cache
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\LedLog.g.cs
+D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\x64\Debug\LedLog.baml
