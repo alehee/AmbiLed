@@ -14,7 +14,7 @@ short charCounter = 0;
 void setup() {
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   Serial.begin(250000);
-  FastLED.setBrightness(70);
+  FastLED.setBrightness(50);
 }
 
 void loop() {
