@@ -108,7 +108,28 @@ namespace PcLedVisualization
             long avgG = totals[1] / (width * height);
             long avgR = totals[2] / (width * height);
 
-            if(!skipVisual)
+            long maxMargin = 0;
+
+            if(avgB >= avgB && avgB >= avgR && avgB > 50)
+            {
+                maxMargin = 255 - avgB;
+            }
+
+            else if(avgG >= avgR && avgG>= avgB && avgG > 50)
+            {
+                maxMargin = 255 - avgG;
+            }
+
+            else if(avgR >= avgG && avgR >= avgB && avgR > 50)
+            {
+                maxMargin = 255 - avgR;
+            }
+
+            avgR += maxMargin;
+            avgG += maxMargin;
+            avgB += maxMargin;
+
+            if (!skipVisual)
                 this.rectangle.Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)avgR, (byte)avgG, (byte)avgB));
 
                 if (avgR < 10)
