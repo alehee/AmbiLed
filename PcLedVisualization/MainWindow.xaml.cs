@@ -170,7 +170,11 @@ namespace PcLedVisualization
                     //L_Error.Content = serialSend;
                     //TB_TestLed.Text = serialSend;
                 }));
-                port.Write(serialSend + "\n");
+                try
+                {
+                    port.Write(serialSend + "\n");
+                }
+                catch(Exception ee) { }
                 serialSend = "";
                 timerScreenCapture.Stop();
                 while (dataRead == false)
