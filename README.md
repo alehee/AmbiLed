@@ -24,6 +24,9 @@ Technology I used for this project:
   - [2.1. Download and Installation](#download-and-installation)
 * [3. Hardware](#hardware)
 * [4. How To Use](#how-to-use)
+  - [4.1. Arduino Script preparation](#arduino-script-preparation)
+  - [4.2. Program preparation](#program-preparation)
+  - [4.3. First use config](#first-use-config)
 
 ## Prerequisites
 To run the whole system you need some things. Here is a list with required hardware to even start thinking about testing the software:
@@ -32,20 +35,43 @@ To run the whole system you need some things. Here is a list with required hardw
 * **WS2812B Leds with adapter** [here's](https://www.temposlighting.com/guides/power-any-ws2812b-setup) a link with led strip powering instructions
 * **USB-B cable** *(the printer cable)* to connect Arduino and PC
 * **Some Arduino cables** to connect leds with arduino and adapter
+* **Arduino resistor** about 1kΩ
 
 ## Software
-If you are already stocked with required things you can prepare the program for your PC
+If you are already stocked with required things you can prepare the program for your PC!
 
   ### Download and Installation
   There's two ways: you can download the master branch with code, check how it's working and compile whole application in *Visual Studio 2019*, or simply download it from link below and run it from *PcLedVisualization.exe*
   
-  [Here's](https://drive.google.com/file/d/1Y1SYh1i5DQcvLbZ9M6i9LgA-GesjCVTb/view?usp=sharing) the download link for the newest version of the program
+  [Here's](https://drive.google.com/file/d/1cXYhwnzx4T2U43efEgOIxQ6MEpvLbJOK/view?usp=sharing) the download link for the newest version of the program
+  
+  In the *AmbiLed.zip* archive you can find also the arduino *AmbiLed.ino* code which we will discuss later! (It can also be found in master brach *ArduinoScript* folder)
   
   If the program runs with no problems you are good to go! Software preparation will be continued in *How To Use* section so [hop in](#how-to-use) if you want!
 
 ## Hardware
+To run the whole system, as I wrote before, you need some **Arduino Uno with cable**, **WS2812B Leds with adapter**, **some Arduino cables** and a **resistor**!
+
+**Before you start** preparing hardware check again if your adapter will hold the led strip power consumption. Again [here's](https://www.temposlighting.com/guides/power-any-ws2812b-setup) a powering guide for this type of led strips
+
+If we are good to go, here's the scheme of Arduino system you need to connect:
+
+<p align="center">
+  <img src="https://github.com/alehee/AmbiLed/blob/master/github_resources/arduino_schema.png">
+</p>
+
+Just connect or solder like on scheme and it's done! Just like that!
+
+We will be setting up Arduino script in the next step so keep the circuit next to you!
 
 ## How To Use
+We still have some preparations to make, so here's the last three steps: **Arduino Script preparation**, **Program preparation** and **First use config**. We are close!
+
+  ### Arduino Script preparation
+  
+  ### Program preparation
+  
+  ### First use config
 
 ## Thank you!
 Thank you for peeking at my project!
