@@ -1,12 +1,11 @@
 # AmbiLed
-![It's a front pic!](https://github.com/alehee/AmbiLed/blob/master/github_resources/github_front.png?raw=true)
-
-## Description
-AmibLed is a low budget Philips Ambilight copy for *WS2812B Leds + Arduino + PC* setup. System is based on PC Aplication which sends information to microcontroller that changes specific leds on strip. Led strip refreshes aroud 15 times per second (Arduino data sending is not optimized :/) but its enough to watch movies with cool colorful effect!
 
 <p align="center">
   <img src="https://github.com/alehee/AmbiLed/blob/master/github_resources/test.gif">
 </p>
+
+## Description
+AmibLed is a low budget Philips Ambilight copy for *WS2812B Leds + Arduino + PC* setup. System is based on PC Aplication which sends information to microcontroller that changes specific leds on strip. Led strip refreshes aroud 15 times per second (Arduino data sending is not optimized :/) but its enough to watch movies with cool colorful effect!
 
 ## Used technology
 Technology I used for this project:
