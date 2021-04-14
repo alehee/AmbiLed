@@ -7,6 +7,8 @@
 ## Description
 AmibLed is a low budget Philips Ambilight copy for *WS2812B Leds + Arduino + PC* setup. System is based on PC Aplication which sends information to microcontroller that changes specific leds on strip. Led strip refreshes aroud 15 times per second (Arduino data sending is not optimized :/) but its enough to watch movies with cool colorful effect!
 
+**Currently im working on faster version with poorer color range, original project files and program in download section!**
+
 ## Used technology
 Technology I used for this project:
 * C#
@@ -42,10 +44,17 @@ If you are already stocked with required things you can prepare the program for 
   ### Download and Installation
   There's two ways: you can download the master branch with code, check how it's working and compile whole application in *Visual Studio 2019*, or simply download it from link below and run it from *PcLedVisualization.exe*
   
-  [Here's](https://drive.google.com/file/d/1cXYhwnzx4T2U43efEgOIxQ6MEpvLbJOK/view?usp=sharing) the download link for the newest version of the program
+  #### Version 1.1 *(in progress)*
+  This version is still in development, you can download the master branch to check the code!
+  
+  #### Version 1.0 - Full Color Range Verion
+  [Here's](https://drive.google.com/file/d/1cXYhwnzx4T2U43efEgOIxQ6MEpvLbJOK/view?usp=sharing) the download link for the newest version of the **Full Color Range Version** program
   
   In the *AmbiLed.zip* archive you can find also the arduino *AmbiLed.ino* code which we will discuss later! (It can also be found in master brach *ArduinoScript* folder)
   
+  [Here's the latest project files](https://drive.google.com/file/d/1oSSAx8QGpx7L8nfB4fKkBkjZXaqRgypt/view?usp=sharing) for the **Full Color Range Version**
+  
+  #### What next?
   If the program runs with no problems you are good to go! Software preparation will be continued in *How To Use* section so [hop in](#how-to-use) if you want!
 
 ## Hardware
