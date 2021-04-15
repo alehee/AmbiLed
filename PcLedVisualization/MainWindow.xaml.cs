@@ -22,6 +22,8 @@ namespace PcLedVisualization
 {
     public partial class MainWindow : Window
     {
+        const string VERSION = "1.1.0t";
+
         Led []leds = new Led[300];
 
         int screenLeft = 0;
@@ -58,8 +60,12 @@ namespace PcLedVisualization
             InitializeComponent();
             ledLog.Hide();
 
+            Dispatcher.BeginInvoke(new Action(() => {
+                L_Version.Content = "v. " + VERSION;
+            }));
+
             // Checking for older calibration
-            if(Properties.Settings.Default.LedsVertical != "0")
+            if (Properties.Settings.Default.LedsVertical != "0")
             {
                 this.TB_LedsVertical.Text = Properties.Settings.Default.LedsVertical.ToString();
                 this.TB_LedsHorizontal.Text = Properties.Settings.Default.LedsHorizontal.ToString();
@@ -117,25 +123,21 @@ namespace PcLedVisualization
                     if (i < ledsHorizontal)
                     {
                         // Bottom
-                        //screenRectangle = new System.Drawing.Rectangle((int)(screenWidth - ledsHorizontalWidth * 4 - i * ledsHorizontalWidth * 4), (int)(screenHeight - screenCaptureThickness), (int)(ledsHorizontalWidth * 4), screenCaptureThickness);
                         screenRectangle = new System.Drawing.Rectangle((int)(screenWidth - (i+1) * screenHorizontalWidth), (int)(screenHeight - screenCaptureThickness), (int)(screenHorizontalWidth), screenCaptureThickness);
                     }
                     else if (i < (ledsHorizontal + ledsVertical))
                     {
                         // Left
-                        //screenRectangle = new System.Drawing.Rectangle((int)screenLeft, (int)(screenHeight - ledsVerticalHeight * 4 - (i - ledsHorizontal) * ledsVerticalHeight * 4), screenCaptureThickness, (int)(ledsVerticalHeight * 4));
                         screenRectangle = new System.Drawing.Rectangle((int)screenLeft, (int)(screenHeight - (i - ledsHorizontal + 1) * screenVerticalHeight), screenCaptureThickness, (int)(screenVerticalHeight));
                     }
                     else if (i < (ledsHorizontal * 2 + ledsVertical))
                     {
                         // Top
-                        //screenRectangle = new System.Drawing.Rectangle((int)(screenLeft + (i - ledsHorizontal - ledsVertical) * ledsHorizontalWidth * 4), (int)(screenTop), (int)(ledsHorizontalWidth * 4), screenCaptureThickness);
                         screenRectangle = new System.Drawing.Rectangle((int)(screenLeft + (i - ledsHorizontal - ledsVertical) * screenHorizontalWidth), (int)(screenTop), (int)(screenHorizontalWidth), screenCaptureThickness);
                     }
                     else
                     {
                         // Right
-                        //screenRectangle = new System.Drawing.Rectangle((int)(screenWidth - screenCaptureThickness), (int)(screenTop + (i - ledsVertical - ledsHorizontal * 2) * ledsVerticalHeight * 4), screenCaptureThickness, (int)(ledsVerticalHeight * 4));
                         screenRectangle = new System.Drawing.Rectangle((int)(screenWidth - screenCaptureThickness), (int)(screenTop + (i - ledsVertical - ledsHorizontal * 2) * screenVerticalHeight), screenCaptureThickness, (int)(screenVerticalHeight));
                     }
 
@@ -191,7 +193,6 @@ namespace PcLedVisualization
         }
 
         // Timer function to checking leds
-
         void ledCheckReturn(Object sender, EventArgs e)
         {
             byte r, g, b;

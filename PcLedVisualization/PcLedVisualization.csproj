@@ -134,5 +134,8 @@
   <ItemGroup>
     <Resource Include="8678.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CHANGELOG.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
