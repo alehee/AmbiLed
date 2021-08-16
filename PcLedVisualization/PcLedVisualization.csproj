@@ -93,6 +93,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Leds.cs" />
+    <Compile Include="MainFunc.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

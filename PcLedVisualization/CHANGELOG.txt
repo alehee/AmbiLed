@@ -1,2 +1,2 @@
-﻿1.1.0 - in progress
-	* fresh UI look
+﻿* **1.1.0** - in development
+  * refreshed GUI

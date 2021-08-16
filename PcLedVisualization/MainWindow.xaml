@@ -7,48 +7,9 @@
         mc:Ignorable="d"
         Title="AmbiLed" Height="450" Width="800" Background="#222222" Closing="Window_Closing" ResizeMode="NoResize">
     <Grid x:Name="MainGrid">
-        <Image Height="270" Margin="0" Width="480" OpacityMask="Black" Source="snorlax_pokemon_art_vector_102108_1920x1080.jpg"/>
         <Image x:Name="I_Screen" Height="270" Margin="0" Width="480" OpacityMask="Black" Source="snorlax_pokemon_art_vector_102108_1920x1080.jpg"/>
         <Label x:Name="L_Error" Content="Error log" HorizontalAlignment="Center" Margin="400,0,0,370" VerticalAlignment="Center" Foreground="#FFFF3F3F" FontSize="10" FontWeight="Bold"/>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="8678.png" Width="100" Height="100" StretchDirection="DownOnly" Margin="0,370,0,0" />
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="8678.png" Width="100" Height="100" StretchDirection="DownOnly" Margin="0,0,0,370" RenderTransformOrigin="0.5,0.5" >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="8678.png" Width="100" Height="100" StretchDirection="DownOnly" Margin="0,0,600,0" RenderTransformOrigin="0.5,0.5" >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="8678.png" Width="100" Height="100" StretchDirection="DownOnly" Margin="600,0,0,0" RenderTransformOrigin="0.5,0.5" >
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="270"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Rectangle x:Name="R_Unit" Height="30" Margin="400,220,0,0" Stroke="Black" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#FF5BF900"/>
-                    <GradientStop Color="#FF00AEFF" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+        
         <Label x:Name="L_LedsVertical" Content="Leds Vertical" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Foreground="White" FontSize="9"/>
         <TextBox x:Name="TB_LedsVertical" HorizontalAlignment="Left" Height="20" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
         <Label x:Name="L_LedsHorizontal" Content="Leds Horizontal" HorizontalAlignment="Left" Margin="5,80,0,0" VerticalAlignment="Top" Foreground="White" FontSize="9"/>

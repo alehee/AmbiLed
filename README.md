@@ -145,6 +145,12 @@ At this moment I've still got some issues to fix or improve:
 * Sometimes led strip turns off and I need to reset it manually, it's all abour **powering** the led strip or my low quality soldering problem :/
 * Led colors are not specific, I'll try to fix the algorithm but you can also experiment with it by downloading the master branch!
 
+## Changelog
+What's new? Here's the list:
+
+* **1.1.0** - in development
+  * refreshed GUI
+
 ## Thank you!
 Thank you for peeking at my project!
 

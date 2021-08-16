@@ -431,7 +431,7 @@ namespace PcLedVisualization
             }
         }
 
-        private void B_LedLog_Click(object sender, RoutedEventArgs e)
+        private async void B_LedLog_Click(object sender, RoutedEventArgs e)
         {
             if(ledLog.IsVisible == false)
             {
