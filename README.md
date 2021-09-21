@@ -148,7 +148,7 @@ At this moment I've still got some issues to fix or improve:
 ## Changelog
 What's new? Here's the list:
 
-* **1.1.0** - in development
+* **2.0.0** - in development
   * refreshed GUI
 
 ## Thank you!

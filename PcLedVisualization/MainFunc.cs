@@ -22,6 +22,9 @@ namespace PcLedVisualization
 {
     public partial class MainWindow : Window
     {
+        private async Task logOutput(string msg)
+        {
 
+        }
     }
 }
