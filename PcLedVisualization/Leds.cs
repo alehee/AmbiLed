@@ -129,7 +129,7 @@ namespace PcLedVisualization
             if (!skipVisual)
                 this.rectangle.Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)avgR, (byte)avgG, (byte)avgB));
 
-            return (Convert.ToInt32(avgR/28)).ToString() + (Convert.ToInt32(avgG / 28)).ToString() + (Convert.ToInt32(avgB / 28)).ToString();
+            return (Convert.ToInt32(avgR / 28)).ToString() + (Convert.ToInt32(avgG / 28)).ToString() + (Convert.ToInt32(avgB / 28)).ToString();
         }
     }
 }

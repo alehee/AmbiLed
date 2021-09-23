@@ -16,7 +16,6 @@ D:\Proj_Programming\CS WPF\PcLedVisualization\PcLedVisualization\obj\Debug\PcLed
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\bin\Debug\PcLedVisualization.exe.config
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\bin\Debug\PcLedVisualization.exe
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\bin\Debug\PcLedVisualization.pdb
-D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualization.csprojAssemblyReference.cache
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\MainWindow.g.cs
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\LedLog.g.cs
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\App.g.cs
@@ -30,3 +29,4 @@ D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualizati
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualization.csproj.CoreCompileInputs.cache
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualization.exe
 D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualization.pdb
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Debug\PcLedVisualization.csproj.AssemblyReference.cache

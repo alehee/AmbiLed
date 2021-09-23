@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PcLedVisualization"
         mc:Ignorable="d"
-        Title="AmbiLed" Height="450" Width="800" Background="#222222" Closing="Window_Closing" ResizeMode="NoResize">
+        Title="AmbiLed" Height="450" Width="800" Background="#222222" ResizeMode="NoResize">
     <Grid x:Name="MainGrid">
         <Image x:Name="I_Screen" Height="270" Margin="0" Width="480" OpacityMask="Black" Source="background.jpg"/>
         <Label x:Name="L_Error" Content="Error log" HorizontalAlignment="Center" Margin="400,0,0,370" VerticalAlignment="Center" Foreground="#FFFF3F3F" FontSize="10" FontWeight="Bold"/>
@@ -34,7 +34,6 @@
         <Label Content="Test Led" Margin="0,0,19,133" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" FontSize="9"/>
         <TextBox x:Name="TB_TestLed" Margin="0,0,10,115" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20" TextWrapping="Wrap" Width="60"/>
         <Button x:Name="B_TestLed" Content="Test" Margin="0,0,10,90" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" FontSize="9" Height="20" Click="B_TestLed_Click"/>
-        <Button x:Name="B_LedLog" Content="Led Log" Margin="0,0,10,50" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" FontSize="9" Height="20" Click="B_LedLog_Click"/>
 
         <Label x:Name="L_Version" Content="v. VERSION" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="10" Foreground="White" Margin="10"/>
     </Grid>
