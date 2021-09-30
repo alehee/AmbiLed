@@ -42,15 +42,10 @@ If you are already stocked with required things you can prepare the program for 
   ### Download and Installation
   There's two ways: you can download the master branch with code, check how it's working and compile whole application in *Visual Studio 2019*, or simply download it from link below and run it from *PcLedVisualization.exe*
   
-  #### Version 1.1.0 *(in progress)*
-  This version is still in development, you can download the master branch to check the code!
-  
-  #### Version 1.0 - Full Color Range Verion
-  [Here's](https://drive.google.com/file/d/1cXYhwnzx4T2U43efEgOIxQ6MEpvLbJOK/view?usp=sharing) the download link for the newest version of the **Full Color Range Version** program
+  #### Version 1.1.0
+  [Here's](https://drive.google.com/file/d/1NZgIxdnwdGgkQ5AI4fisWVxzY6il4d6C/view?usp=sharing) the download link for the newest version of the program
   
   In the *AmbiLed.zip* archive you can find also the arduino *AmbiLed.ino* code which we will discuss later! (It can also be found in master brach *ArduinoScript* folder)
-  
-  [Here's the latest project files](https://drive.google.com/file/d/1oSSAx8QGpx7L8nfB4fKkBkjZXaqRgypt/view?usp=sharing) for the **Full Color Range Version**
   
   #### What next?
   If the program runs with no problems you are good to go! Software preparation will be continued in *How To Use* section so [hop in](#how-to-use) if you want!
@@ -146,9 +141,10 @@ At this moment I've still got some issues to fix or improve:
 ## Changelog
 What's new? Here's the list:
 
-* **1.1.0** - in development
+* **1.1.0** - *2021-09-30*
   * refreshed GUI
   * removed "logging leds" option
+  * code optimization
   * better code comments
 
 ## Thank you!

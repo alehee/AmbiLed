@@ -1,0 +1,5 @@
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Release\PcLedVisualization.csproj.AssemblyReference.cache
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Release\MainWindow.g.cs
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Release\App.g.cs
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Release\PcLedVisualization_MarkupCompile.cache
+D:\Proj_Programming\CS WPF\AmbiLed\PcLedVisualization\obj\Release\PcLedVisualization_MarkupCompile.lref

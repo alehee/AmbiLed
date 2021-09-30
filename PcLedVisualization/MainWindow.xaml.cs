@@ -22,7 +22,7 @@ namespace PcLedVisualization
 {
     public partial class MainWindow : Window
     {
-        const string VERSION = "1.1.0t";
+        const string VERSION = "1.1.0";
 
         Led []leds = new Led[300];
 
