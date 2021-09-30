@@ -25,7 +25,7 @@ namespace PcLedVisualization
         /// *** PROCESS SCREEN FUNCTIONS AREA ***
 
         /// F: screen capture timer event
-        void screenCapture(Object sender, EventArgs e)
+        async Task screenCapture()
         {
             Bitmap bitmap_Screen = new Bitmap(screenWidth, screenHeight);
             Graphics g = Graphics.FromImage(bitmap_Screen);
@@ -33,9 +33,8 @@ namespace PcLedVisualization
 
             if (!sendingLedsToArduino)
             {
-                Dispatcher.BeginInvoke(new Action(() => {
-                    I_Screen.Source = Task.Run(async () => await ConvertToImage(bitmap_Screen)).Result;
-                }));
+                var source = Task.Run(async () => await ConvertToImage(bitmap_Screen)).Result;
+                I_Screen.Source = source;
             }
 
             Dispatcher.BeginInvoke(new Action(() => {
