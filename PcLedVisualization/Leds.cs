@@ -131,51 +131,48 @@ namespace PcLedVisualization
                 avgG += maxMargin;
                 avgB += maxMargin;
             }
-            
-
-
 
             if (!skipVisual)
                 this.rectangle.Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)avgR, (byte)avgG, (byte)avgB));
 
-                if (avgR < 10)
-                {
-                    ledColorsLocal += "00" + avgR;
-                }
-                else if(avgR < 100)
-                {
-                    ledColorsLocal += "0" + avgR;
-                }
-                else
-                {
-                    ledColorsLocal += "" + avgR;
-                }
+            if (avgR < 10)
+            {
+                ledColorsLocal += "00" + avgR;
+            }
+            else if (avgR < 100)
+            {
+                ledColorsLocal += "0" + avgR;
+            }
+            else
+            {
+                ledColorsLocal += "" + avgR;
+            }
 
-                if (avgG < 10)
-                {
-                    ledColorsLocal += "00" + avgG;
-                }
-                else if (avgG < 100)
-                {
-                    ledColorsLocal += "0" + avgG;
-                }
-                else
-                {
-                    ledColorsLocal += "" + avgG;
-                }
+            if (avgG < 10)
+            {
+                ledColorsLocal += "00" + avgG;
+            }
+            else if (avgG < 100)
+            {
+                ledColorsLocal += "0" + avgG;
+            }
+            else
+            {
+                ledColorsLocal += "" + avgG;
+            }
 
-                if (avgB < 10)
-                {
-                    ledColorsLocal += "00" + avgB;
-                }
-                else if (avgB < 100)
-                {
-                    ledColorsLocal += "0" + avgB;
-                }
-                else
-                {
-                    ledColorsLocal += "" + avgB;
-                }
+            if (avgB < 10)
+            {
+                ledColorsLocal += "00" + avgB;
+            }
+            else if (avgB < 100)
+            {
+                ledColorsLocal += "0" + avgB;
+            }
+            else
+            {
+                ledColorsLocal += "" + avgB;
+            }
 
             return ledColorsLocal;
         }

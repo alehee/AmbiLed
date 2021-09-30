@@ -122,10 +122,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="snorlax_pokemon_art_vector_102108_1920x1080.jpg" />
+    <Resource Include="arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="8678.png" />
+    <Resource Include="background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

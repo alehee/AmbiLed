@@ -22,6 +22,8 @@ namespace PcLedVisualization
 {
     public partial class MainWindow : Window
     {
+        const string VERSION = "1.1.0t";
+
         Led []leds = new Led[300];
 
         int screenLeft = 0;
@@ -52,9 +54,12 @@ namespace PcLedVisualization
 
         String serialSend = "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
+        /// Constructor of the program
         public MainWindow()
         {
+            // Initializing
             InitializeComponent();
+            L_Version.Content = "v. " + VERSION;
 
             // Checking for older calibration
             if(Properties.Settings.Default.LedsVertical != "0")
@@ -86,8 +91,137 @@ namespace PcLedVisualization
                 }
             }
         }
+        /// ==========
+        
+        /// F: initializing the leds on screen and in program
+        void ledsInitialize(int vertical, int horizontal)
+        {
+            ledsVertical = vertical;
+            ledsHorizontal = horizontal;
+            ledsTotal = vertical * 2 + horizontal * 2;
 
-        // Screen Capture Timer Event
+            ledsVerticalHeight = 270 / (double)ledsVertical;
+            ledsHorizontalWidth = 480 / (double)ledsHorizontal;
+            screenHorizontalWidth = screenWidth / (double)ledsHorizontal;
+            screenVerticalHeight = screenHeight / (double)ledsVertical;
+
+            for (int i = 0; i < ledsTotal; i++)
+            {
+                bool isVertical = false;
+                double ledHeight = 0;
+                double ledWidth = 0;
+
+                if (i < ledsHorizontal)
+                {
+                    isVertical = false;
+                }
+                else if (i < (ledsHorizontal + ledsVertical))
+                {
+                    isVertical = true;
+                }
+                else if (i < (ledsHorizontal * 2 + ledsVertical))
+                {
+                    isVertical = false;
+                }
+                else
+                {
+                    isVertical = true;
+                }
+
+                if (isVertical == false)
+                {
+                    ledWidth = ledsHorizontalWidth;
+                    ledHeight = ledsHorizontalHeight;
+                }
+                else
+                {
+                    ledWidth = ledsVerticalWidth;
+                    ledHeight = ledsVerticalHeight;
+                }
+
+                leds[i] = new Led(i, isVertical, ledHeight, ledWidth);
+
+                if (i < ledsHorizontal)
+                {
+                    // Bottom
+                    leds[i].rectangle.Margin = new Thickness(0, 290, (-480 + ledsHorizontalWidth + i * ledsHorizontalWidth * 2), 0);
+                }
+                else if (i < (ledsHorizontal + ledsVertical))
+                {
+                    // Left
+                    leds[i].rectangle.Margin = new Thickness(0, 0, 500, (-270 + ledsVerticalHeight + (i - ledsHorizontal) * ledsVerticalHeight * 2));
+                }
+                else if (i < (ledsHorizontal * 2 + ledsVertical))
+                {
+                    // Top
+                    leds[i].rectangle.Margin = new Thickness((-480 + ledsHorizontalWidth + (i - ledsHorizontal - ledsVertical) * ledsHorizontalWidth * 2), 0, 0, 290);
+                }
+                else
+                {
+                    // Right
+                    leds[i].rectangle.Margin = new Thickness(500, (-270 + ledsVerticalHeight + (i - ledsHorizontal * 2 - ledsVertical) * ledsVerticalHeight * 2), 0, 0);
+                }
+
+                MainGrid.Children.Add(leds[i].rectangle);
+            }
+
+            Dispatcher.BeginInvoke(new Action(() => {
+                this.L_Error.Content = "Leds initialized as " + ledsVertical + " Vertical, " + ledsHorizontal + " Horizontal!";
+            }));
+        }
+        /// ==========
+
+        /// F: calibrating function
+        void setLeds()
+        {
+            Dispatcher.BeginInvoke(new Action(() => {
+                this.L_Error.Content = "";
+            }));
+
+            try
+            {
+                if (this.TB_LedsVertical.Text.ToString() != "" && Convert.ToInt32(this.TB_LedsVertical.Text.ToString()) > 0 && Convert.ToInt32(this.TB_LedsVertical.Text.ToString()) < 50 &&
+                    this.TB_LedsHorizontal.Text.ToString() != "" && Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()) > 0 && Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()) < 50 &&
+                    this.TB_ScreenStartX.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenStartX.Text.ToString()) >= 0 &&
+                    this.TB_ScreenStartY.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenStartY.Text.ToString()) >= 0 &&
+                    this.TB_ScreenEndX.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenEndX.Text.ToString()) > 0 &&
+                    this.TB_ScreenEndY.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenEndY.Text.ToString()) > 0
+                    )
+                {
+                    // Saving calibration data
+                    Properties.Settings.Default.LedsVertical = this.TB_LedsVertical.Text.ToString();
+                    Properties.Settings.Default.LedsHorizontal = this.TB_LedsHorizontal.Text.ToString();
+                    Properties.Settings.Default.ScreenWidth = this.TB_ScreenEndX.Text.ToString();
+                    Properties.Settings.Default.ScreenHeight = this.TB_ScreenEndY.Text.ToString();
+                    Properties.Settings.Default.ScreenLeft = this.TB_ScreenStartX.Text.ToString();
+                    Properties.Settings.Default.ScreenTop = this.TB_ScreenStartY.Text.ToString();
+                    Properties.Settings.Default.Save();
+
+                    // Getting the Screen Coords
+                    screenWidth = Convert.ToInt32(this.TB_ScreenEndX.Text.ToString());
+                    screenHeight = Convert.ToInt32(this.TB_ScreenEndY.Text.ToString());
+                    screenLeft = Convert.ToInt32(this.TB_ScreenStartX.Text.ToString());
+                    screenTop = Convert.ToInt32(this.TB_ScreenStartY.Text.ToString());
+
+                    ledsInitialize(Convert.ToInt32(this.TB_LedsVertical.Text.ToString()), Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()));
+                }
+                else
+                {
+                    Dispatcher.BeginInvoke(new Action(() => {
+                        this.L_Error.Content = "Leds/screen coords data input error!";
+                    }));
+                }
+            }
+            catch (Exception exception)
+            {
+                Dispatcher.BeginInvoke(new Action(() => {
+                    this.L_Error.Content = exception.ToString();
+                }));
+            }
+        }
+        /// ==========
+
+        /// F: timer event for screen capture
         void screenCapture(Object sender, EventArgs e)
         {
             Bitmap bitmap_Screen = new Bitmap(screenWidth, screenHeight);
@@ -142,9 +276,23 @@ namespace PcLedVisualization
                 timerScreenCapture.Start();
             }
         }
+        /// ==========
 
-        // Timer function to checking leds
+        /// F: Screen Capture Convert function
+        public BitmapImage ConvertToImage(Bitmap src)
+        {
+            MemoryStream ms = new MemoryStream();
+            ((System.Drawing.Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            ms.Seek(0, SeekOrigin.Begin);
+            image.StreamSource = ms;
+            image.EndInit();
+            return image;
+        }
+        /// ==========
 
+        /// F: timer event for checking leds
         void ledCheckReturn(Object sender, EventArgs e)
         {
             byte r, g, b;
@@ -177,147 +325,21 @@ namespace PcLedVisualization
                 leds[ledToCheckIndex].rectangle.Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(r, g, b));
             }));
         }
+        /// ==========
 
-        // Screen Capture Convert 
-        public BitmapImage ConvertToImage(Bitmap src)
-        {
-            MemoryStream ms = new MemoryStream();
-            ((System.Drawing.Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            ms.Seek(0, SeekOrigin.Begin);
-            image.StreamSource = ms;
-            image.EndInit();
-            return image;
-        }
 
-        // Initializing the leds
-        void ledsInitialize(int vertical, int horizontal)
-        {
-            ledsVertical = vertical;
-            ledsHorizontal = horizontal;
-            ledsTotal = vertical * 2 + horizontal * 2;
 
-            ledsVerticalHeight = 270 / (double)ledsVertical;
-            ledsHorizontalWidth = 480 / (double)ledsHorizontal;
-            screenHorizontalWidth = screenWidth / (double)ledsHorizontal;
-            screenVerticalHeight = screenHeight / (double)ledsVertical;
 
-            for (int i=0; i<ledsTotal; i++)
-            {
-                bool isVertical = false;
-                double ledHeight = 0;
-                double ledWidth = 0;
 
-                if (i < ledsHorizontal)
-                {
-                    isVertical = false;
-                }
-                else if (i < (ledsHorizontal + ledsVertical))
-                {
-                    isVertical = true;
-                }
-                else if (i < (ledsHorizontal*2 + ledsVertical))
-                {
-                    isVertical = false;
-                }
-                else
-                {
-                    isVertical = true;
-                }
+        /// BUTTONS HANDLING AREA
 
-                if(isVertical == false)
-                {
-                    ledWidth = ledsHorizontalWidth;
-                    ledHeight = ledsHorizontalHeight;
-                }
-                else
-                {
-                    ledWidth = ledsVerticalWidth;
-                    ledHeight = ledsVerticalHeight;
-                }
-
-                leds[i] = new Led(i, isVertical, ledHeight, ledWidth);
-
-                if (i < ledsHorizontal)
-                {
-                    // Bottom
-                    leds[i].rectangle.Margin = new Thickness(0, 290, (-480 + ledsHorizontalWidth + i*ledsHorizontalWidth*2), 0);
-                }
-                else if (i < (ledsHorizontal + ledsVertical))
-                {
-                    // Left
-                    leds[i].rectangle.Margin = new Thickness(0, 0, 500, (-270 + ledsVerticalHeight + (i-ledsHorizontal)*ledsVerticalHeight*2));
-                }
-                else if (i < (ledsHorizontal * 2 + ledsVertical))
-                {
-                    // Top
-                    leds[i].rectangle.Margin = new Thickness((-480 + ledsHorizontalWidth + (i - ledsHorizontal - ledsVertical)*ledsHorizontalWidth * 2), 0, 0, 290);
-                }
-                else
-                {
-                    // Right
-                    leds[i].rectangle.Margin = new Thickness(500, (-270 + ledsVerticalHeight + (i - ledsHorizontal*2 - ledsVertical) * ledsVerticalHeight * 2), 0, 0);
-                }
-
-                MainGrid.Children.Add(leds[i].rectangle);
-            }
-
-            Dispatcher.BeginInvoke(new Action(() => {
-                this.L_Error.Content = "Leds initialized as " + ledsVertical + " Vertical, " + ledsHorizontal + " Horizontal!";
-            }));
-        }
-
-        // Setting the leds
+        // B: calibrate
         private void B_Calibrate_Click(object sender, RoutedEventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(() => {
-                this.L_Error.Content = "";
-            }));
-
-            try
-            {
-                if (this.TB_LedsVertical.Text.ToString() != "" && Convert.ToInt32(this.TB_LedsVertical.Text.ToString()) > 0 && Convert.ToInt32(this.TB_LedsVertical.Text.ToString()) < 50 &&
-                    this.TB_LedsHorizontal.Text.ToString() != "" && Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()) > 0 && Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()) < 50 &&
-                    this.TB_ScreenStartX.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenStartX.Text.ToString()) >= 0 &&
-                    this.TB_ScreenStartY.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenStartY.Text.ToString()) >= 0 &&
-                    this.TB_ScreenEndX.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenEndX.Text.ToString()) > 0 &&
-                    this.TB_ScreenEndY.Text.ToString() != "" && Convert.ToInt32(this.TB_ScreenEndY.Text.ToString()) > 0
-                    )
-                {
-                    // Saving calibration data
-                    Properties.Settings.Default.LedsVertical = this.TB_LedsVertical.Text.ToString();
-                    Properties.Settings.Default.LedsHorizontal = this.TB_LedsHorizontal.Text.ToString();
-                    Properties.Settings.Default.ScreenWidth = this.TB_ScreenEndX.Text.ToString();
-                    Properties.Settings.Default.ScreenHeight = this.TB_ScreenEndY.Text.ToString();
-                    Properties.Settings.Default.ScreenLeft = this.TB_ScreenStartX.Text.ToString();
-                    Properties.Settings.Default.ScreenTop = this.TB_ScreenStartY.Text.ToString();
-                    Properties.Settings.Default.Save();
-
-                    // Getting the Screen Coords
-                    screenWidth = Convert.ToInt32(this.TB_ScreenEndX.Text.ToString());
-                    screenHeight = Convert.ToInt32(this.TB_ScreenEndY.Text.ToString());
-                    screenLeft = Convert.ToInt32(this.TB_ScreenStartX.Text.ToString());
-                    screenTop = Convert.ToInt32(this.TB_ScreenStartY.Text.ToString());
-
-                    ledsInitialize(Convert.ToInt32(this.TB_LedsVertical.Text.ToString()), Convert.ToInt32(this.TB_LedsHorizontal.Text.ToString()));
-                }
-                else
-                {
-                    Dispatcher.BeginInvoke(new Action(() => {
-                        this.L_Error.Content = "Leds/screen coords data input error!";
-                    }));
-                }
-            }
-            catch (Exception exception)
-            {
-                Dispatcher.BeginInvoke(new Action(() => {
-                    this.L_Error.Content = exception.ToString();
-                }));
-            }
-            
+            setLeds();
         }
 
+        // B: start/stop capturing
         private void B_Capture_Click(object sender, RoutedEventArgs e)
         {
             if (isCaptured)
@@ -332,6 +354,7 @@ namespace PcLedVisualization
                     B_SendLeds.IsEnabled = false;
                 }));
             }
+
             else
             {
                 if (screenHeight == 0 && screenLeft == 0 && screenTop == 0 && screenWidth == 0)
@@ -355,11 +378,12 @@ namespace PcLedVisualization
             }
         }
 
+        // B: test led in program
         private void B_TestLed_Click(object sender, RoutedEventArgs e)
         {
             if(Convert.ToInt32(TB_TestLed.Text) < ledsTotal && Convert.ToInt32(TB_TestLed.Text) >= 0)
             {
-                 int ledToTestIndex = Convert.ToInt32(TB_TestLed.Text);
+                int ledToTestIndex = Convert.ToInt32(TB_TestLed.Text);
 
                 Dispatcher.BeginInvoke(new Action(() => {
                     this.L_Error.Content = "Testing led " + ledToTestIndex;
@@ -375,6 +399,7 @@ namespace PcLedVisualization
                 timerLedCheck.Enabled = true;
                 timerLedCheck.Start();
             }
+
             else
             {
                 Dispatcher.BeginInvoke(new Action(() => {
@@ -383,6 +408,7 @@ namespace PcLedVisualization
             }
         }
 
+        // B: start/stop sending leds info to arduino
         private void B_SendLeds_Click(object sender, RoutedEventArgs e)
         {
             if(sendingLedsToArduino == true)
@@ -399,6 +425,7 @@ namespace PcLedVisualization
                     L_Error.Content = "Closed connection";
                 }));
             }
+
             else
             {
                 sendingLedsToArduino = true;
@@ -416,5 +443,7 @@ namespace PcLedVisualization
                 }));
             }
         }
+
+        /// ==========
     }
 }

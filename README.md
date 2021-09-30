@@ -148,6 +148,8 @@ What's new? Here's the list:
 
 * **1.1.0** - in development
   * refreshed GUI
+  * removed "logging leds" option
+  * better code comments
 
 ## Thank you!
 Thank you for peeking at my project!
